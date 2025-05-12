@@ -22,6 +22,10 @@ function Home() {
 
     const navigate = useNavigate()
 
+    const handleEdit = () => {
+        navigate("/Edit")
+    }
+
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem("diaries")) || []
         const filtered = saved.filter((d) => {
@@ -82,6 +86,7 @@ function Home() {
                 <div className="card-content">
                 <h4>{d.date}</h4>
                 <p>{d.content}</p>
+                <button onClick={handleEdit} className="edit-button">수정하기</button>
                 </div>
             </div>
             ))
