@@ -46,6 +46,16 @@ function Edit() {
         navigate("/")
     }
 
+    const handleDelete = () => {
+        if (!window.confirm("정말 삭제하시겠습니까?")) return
+
+        const diaries = JSON.parse(localStorage.getItem("diaries")) || []
+        const filtered = diaries.filter((d) => d.id !== parseInt(id))
+        localStorage.setItem("diaries", JSON.stringify(filtered))
+        alert("삭제 완료")
+        navigate("/")
+    }
+
     return (
         <div className="New">
         <h2>일기 수정하기</h2>
@@ -89,6 +99,7 @@ function Edit() {
         <section className="button-section">
             <button onClick={() => navigate(-1)}>취소</button>
             <button onClick={handleEdit}>수정하기</button>
+            <button onClick={handleDelete} className="delete-button">삭제하기</button>
         </section>
         </div>
     )
