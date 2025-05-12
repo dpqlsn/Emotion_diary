@@ -32,18 +32,18 @@ const handleSave = () => {
     const existingDiaries = JSON.parse(localStorage.getItem("diaries")) || []
     existingDiaries.push(newDiary)
     localStorage.setItem("diaries", JSON.stringify(existingDiaries))
-    
+
     navigate("/")
 }
 
     const handleback = () => {
-    navigate(-1)
+    navigate("/")
 }
 
 return (
     <>
-    <button onClick={handleback}>뒤로가기</button>
     <div className="New">
+        <button onClick={handleback}>뒤로가기</button>
         <h2>새 일기 적기</h2>
 
         <section className="input-section">

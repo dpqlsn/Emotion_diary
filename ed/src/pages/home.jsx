@@ -41,17 +41,17 @@ function Home() {
     setDiaries(sorted)
 }, [sortOrder, currentMonth])
 
-    const moveMonth = (diff) => {
-    const newMonth = new Date(currentMonth)
-    newMonth.setMonth(currentMonth.getMonth() + diff)
-    setCurrentMonth(newMonth)
-}
+    const moveMonth = (d) => {
+        const newMonth = new Date(currentMonth)
+        newMonth.setMonth(currentMonth.getMonth() + d)
+        setCurrentMonth(newMonth)
+    }
 
     const formatMonth = (date) =>
-    `${date.getFullYear()}년 ${date.getMonth() + 1}월`
+        `${date.getFullYear()}년 ${date.getMonth() + 1}월`
 
     return (
-    <div className="Home">
+        <div className="Home">
         <header className="home-header">
             <button onClick={() => moveMonth(-1)} className="arrow-button">←</button>
             <h2>{formatMonth(currentMonth)}</h2>
