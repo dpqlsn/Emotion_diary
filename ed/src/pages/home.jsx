@@ -22,10 +22,6 @@ function Home() {
 
     const navigate = useNavigate()
 
-    const handleEdit = () => {
-        navigate("/Edit")
-    }
-
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem("diaries")) || []
         const filtered = saved.filter((d) => {
