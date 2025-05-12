@@ -15,19 +15,17 @@ import "../App.css"
     { id: 5, img: emotion5, name: "최악" },
 ]
 
-
-    const handleBack = () => {
-        navigate(-1)
-    }
-
 function New() {
     const navigate = useNavigate()
     const [selectedEmotion, setSelectedEmotion] = useState(3)
     const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
     const [content, setContent] = useState("")
 
+    const handleBack = () => {
+        navigate("/")
+    }
+    
     const handleSave = () => {
-        alert("저장 완료!")
         navigate("/")
     }
 
@@ -35,7 +33,7 @@ function New() {
     <>
         <div className="New">
             <button onClick={handleBack}>뒤로가기</button>
-            <h2>새 일기 적기</h2>
+            <h2>새 일기 쓰기</h2>
 
             <section className="input-section">
                 <h3>오늘 날짜</h3>
