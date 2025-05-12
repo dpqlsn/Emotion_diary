@@ -7,7 +7,7 @@ import emotion4 from "../assets/emotion4.png"
 import emotion5 from "../assets/emotion5.png"
 import "../App.css"
 
-    const emotionList = [
+const emotionList = [
     { id: 1, img: emotion1, name: "완전 좋음" },
     { id: 2, img: emotion2, name: "좋음" },
     { id: 3, img: emotion3, name: "그저 그럼" },
@@ -21,61 +21,72 @@ function New() {
     const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
     const [content, setContent] = useState("")
 
-    const handleBack = () => {
-        navigate("/")
+const handleSave = () => {
+    const newDiary = {
+        id: Date.now(),
+        date,
+        emotion: selectedEmotion,
+        content,
     }
+
+    const existingDiaries = JSON.parse(localStorage.getItem("diaries")) || []
+    existingDiaries.push(newDiary)
+    localStorage.setItem("diaries", JSON.stringify(existingDiaries))
     
-    const handleSave = () => {
-        navigate("/")
-    }
+    navigate("/")
+}
 
-    return (
+    const handleback = () => {
+    navigate(-1)
+}
+
+return (
     <>
-        <div className="New">
-            <button onClick={handleBack}>뒤로가기</button>
-            <h2>새 일기 쓰기</h2>
+    <button onClick={handleback}>뒤로가기</button>
+    <div className="New">
+        <h2>새 일기 적기</h2>
 
-            <section className="input-section">
-                <h3>오늘 날짜</h3>
-                <input
+        <section className="input-section">
+            <h3>오늘 날짜</h3>
+            <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                />
-            </section>
+            />
+        </section>
 
-            <section className="input-section">
-                <h3>오늘의 감정</h3>
-                <div className="emotion-list">
+        <section className="input-section">
+            <h3>오늘의 감정</h3>
+            <div className="emotion-list">
                 {emotionList.map((emo) => (
-                    <div
+                <div
                     key={emo.id}
                     className={`emotion-item ${
-                        selectedEmotion === emo.id ? "selected" : ""
+                    selectedEmotion === emo.id ? "selected" : ""
                     }`}
                     onClick={() => setSelectedEmotion(emo.id)}
-                    >
+                >
                     <img src={emo.img} alt={emo.name} />
                     <span>{emo.name}</span>
-                    </div>
-                ))}
                 </div>
-            </section>
+                ))}
+            </div>
+        </section>
 
-            <section className="input-section">
-                <h3>오늘의 일기</h3>
-                <textarea
-                placeholder="오늘은 어땠나요?"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-            />
-            </section>
+        <section className="input-section">
+            <h3>오늘의 일기</h3>
+            <textarea
+            placeholder="오늘은 어땠나요?"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+        />
+        </section>
 
             <section className="button-section">
-                <button onClick={() => navigate(-1)}>취소하기</button>
-                <button onClick={handleSave}>작성완료</button>
-            </section>
-            </div>
+            <button onClick={() => navigate(-1)}>취소</button>
+            <button onClick={handleSave}>저장</button>
+        </section>
+        </div>
         </>
     )
 }
