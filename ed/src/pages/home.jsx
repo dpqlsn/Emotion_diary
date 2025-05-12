@@ -86,7 +86,7 @@ function Home() {
                 <div className="card-content">
                 <h4>{d.date}</h4>
                 <p>{d.content}</p>
-                <button onClick={handleEdit} className="edit-button">수정하기</button>
+                <button onClick={() => navigate(`/edit/${d.id}`)}>수정하기</button>
                 </div>
             </div>
             ))
