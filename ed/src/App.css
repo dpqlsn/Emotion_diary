@@ -52,3 +52,48 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+
+.Home {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.home-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-button {
+  background-color: transparent;
+  font-size: 28px;
+  border: none;
+  cursor: pointer;
+}
+
+.home-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.diary-card {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 2%;
+}
+
+.diary-card img {
+  width: 60px;
+  height: 60px;
+  margin-right: 5%;
+}
+
+.card-content p {
+  font-size: 14px;
+  color: #666;
+}
